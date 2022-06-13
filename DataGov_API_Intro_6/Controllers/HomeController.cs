@@ -1,24 +1,20 @@
-﻿using DataGov_API_Intro_6.Models;
+﻿using Project_College_Scorecard.Models;
 using Microsoft.AspNetCore.Mvc;
-using DataGov_API_Intro_6.DataAccess;
+using Project_College_Scorecard.DataAccess;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DataGov_API_Intro_6.Controllers
+namespace Project_College_Scorecard.Controllers
 {
     public class HomeController : Controller
     {
         HttpClient httpClient;
 
-        static string BASE_URL = "https://developer.nps.gov/api/v1";
-        static string API_KEY = "mdBybOievMdeX3eYSC0MhFu3U7xRV18xHAPG04qb"; //Add your API key here inside ""
-
-        // Obtaining the API key is easy. The same key should be usable across the entire
-        // data.gov developer network, i.e. all data sources on data.gov.
-        // https://www.nps.gov/subjects/developer/get-started.htm
+        static string BASE_URL = "https://api.data.gov/ed/collegescorecard/v1";
+        static string API_KEY = "oA32eJnmauMrYQv83qjlgGQcMvxQfpTnW3ZtpdXU"; //Add your API key here inside ""
 
         public ApplicationDbContext dbContext;
 
@@ -35,35 +31,30 @@ namespace DataGov_API_Intro_6.Controllers
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-            string NATIONAL_PARK_API_PATH = BASE_URL + "/parks?limit=20";
-            string parksData = "";
+            string NATIONAL_COLLEGE_API_PATH = BASE_URL + "/schools?school.state=FL&api_key=";
+            string collegesData = "";
 
-            Parks parks = null;
+            AllColleges colleges = null;
 
-            //httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
-            httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
+            httpClient.BaseAddress = new Uri(NATIONAL_COLLEGE_API_PATH);
 
             try
             {
-                //HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH)
-                //                                        .GetAwaiter().GetResult();
-                HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH)
+                HttpResponseMessage response = httpClient.GetAsync(NATIONAL_COLLEGE_API_PATH)
                                                         .GetAwaiter().GetResult();
-
-
 
                 if (response.IsSuccessStatusCode)
                 {
-                    parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    collegesData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 }
 
-                if (!parksData.Equals(""))
+                if (!collegesData.Equals(""))
                 {
                     // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    parks = JsonConvert.DeserializeObject<Parks>(parksData);
+                    colleges = JsonConvert.DeserializeObject<AllColleges>(collegesData);
                 }
 
-                dbContext.Parks.Add(parks);
+                dbContext.allColleges.Add(colleges);
                 await dbContext.SaveChangesAsync();
             }
             catch (Exception e)
@@ -72,7 +63,7 @@ namespace DataGov_API_Intro_6.Controllers
                 Console.WriteLine(e.Message);
             }
 
-            return View(parks);
+            return View(colleges);
         }
     }
 }

@@ -1,0 +1,170 @@
+﻿body {
+    margin: 0px;
+    margin: 0;
+    padding: 0;
+    font-family: "Tahoma", "Calibri","Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 1.3em;
+    font-style =Bold;
+    color: #000000;
+}
+
+h2 {
+    font-size: 1.3em;
+    color: #000000;
+}
+
+h3 {
+    font-size: 1em;
+    color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+    a:hover {
+        color: #990033;
+    }
+
+.title {
+    margin: 0;
+    padding: 10px 0 0 20px;
+    font-weight: normal;
+}
+
+.VanillaTable {
+    border: 0px solid #2F4F4F;
+    padding: 0px;
+    width:100%;
+}
+
+.LeftBar {
+    border: 0px solid #2F4F4F;
+    background-color: #660066;
+    padding: 0px;
+    width: 10%;
+}
+.MainContent {
+    width: 90%;
+    border: 3px solid #660066;
+    color: white;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 0px;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.LeftBarCell {
+    width: 100%;
+    border: 0px solid #FFFFFF;
+    background-color: #CCFFFF;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 0px;
+    cursor: pointer;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+.PictureBox {
+    width: 300px;
+    height:200px;
+    background-color: #CCFFFF;  
+}
+.PictureBoxDetailed {
+    width: 600px;
+    height: 400px;
+    background-color: #CCFFFF;
+}
+.PictureBoxButton {
+    width: 200px;
+    height: 50px;    
+}
+.Hotel {
+    border: 0px solid #2F4F4F;
+    background-color: #FFDFFF;
+    padding: 10px;
+    width: 30%;
+    font-weight: bold;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.HotelAlt {
+    border: 0px solid #2F4F4F;
+    color: #FFFFFF;
+    background-color: #660066;
+    padding: 10px;
+    width: 30%;
+    font-weight: bold;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.HotelDesc {
+    border: 0px solid #2F4F4F;
+    background-color: #FFF5FF;
+    padding: 0px;
+    width: 60%;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.HotelDetailed {
+    border: 0px solid #2F4F4F;
+    text-align: center;
+    background-color: #FFDFFF;
+    padding: 10px;
+    width: 90%;
+    font-weight: bold;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+}
+.RoomDescAlternate {
+    border: 0px solid #2F4F4F;
+    background-color: #FFFFFF;
+    padding: 0px;
+    width: 90%;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.RoomDesc {    
+    border: 0px solid #2F4F4F;
+    background-color: #FFF5FF;
+    padding: 0px;
+    width: 90%;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) { /* For mobile phones*/
+.leftMenu, .rightMenu, .mainBody {
+width: 100%;
+}
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) { /* For tablets */
+.leftMenu, .rightMenu, .mainBody {
+width: 80%;
+}
+}
+@media only screen and (min-width: 912px) {/* For desktops */
+.leftMenu {
+width: 26%;
+}
+.mainBody {
+width: 50%;
+}
+.rightMenu {
+width: 24%
+}
+}

@@ -1,10 +1,85 @@
-﻿@model DataGov_API_Intro_6.Models.Parks
+﻿@model Project_College_Scorecard.Models.AllColleges
 
 @{ ViewData["Title"] = "Index"; }
 
-<h2>Index</h2>
 
-@foreach (DataGov_API_Intro_6.Models.Park park in Model.data)
-{@(park.parkCode + " " + park.fullName + " " + park.latLong)
-                <br />
-  }
+<head>
+    <meta charset="utf-8" />
+    <title>Colleges</title>
+    <link href=".\css\default.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <table class="VanillaTable">
+        <tr>
+            <td colspan="3">
+                <a href="index.html"><img src=".\img\Logo.JPG" width="400"></img></a>   
+            </td>
+        </tr>       
+        <tr>
+            <td valign="top" class="LeftBar" >
+                <table width="100%">
+                    <tr><td class="LeftBarCell"><a href="about.html">About Page</a></td></tr>
+                    @*<tr><td class="LeftBarCell"><a href="Index.html">Flight Booking</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Car Rentals</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Cabin Rentals</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Boat Rentals</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Bike Rentals</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Motorcycle Zone</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Food and Restaurants</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Gift Shops</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Camping Gear</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Scenic Railroad Bookings</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">River Cruises</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">International Cruises</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Travel Insurance</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Procedures and Policies</a></td></tr>
+                    <tr><td class="LeftBarCell"><a href="Index.html">Information Zone</a></td></tr>*@
+                </table>
+            </td>
+            <td valign="top" width="5"> </td>
+            <td  class="MainContent" valign="top">
+                <table border="0" valign="top">   
+                    @foreach (Project_College_Scorecard.Models.CollegeResult result in Model.results)
+                    {
+                        <tr>  
+                            <td><img class="PictureBox" src=".\img\hotel1.jpg" /></td>
+                            <td class="Hotel"> <a href="Sonal.html">@(result.latest.school.name)</a></td>                        
+                            <td class="Hotel"> <a href="Sonal.html">@(result.latest.school.city)</a></td>
+                            <td class="HotelDesc">
+                                <div class="chart-container" style="position: relative; height:15vh; width:15vw">
+                                    <canvas id="bar-chart"></canvas>
+                                </div>
+                                <script>
+                                    new Chart(document.getElementById("bar-chart"), {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                            datasets: [
+                                                {
+                                                    label: "Average Room Rate ",
+                                                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                                    data: [247, 180, 320 , 350, 533]
+                                                }
+                                            ]
+                                        },
+                                        options: {
+                                            barThickness: 1,
+                                            legend: { display: false },
+                                            title: {
+                                                display: true,
+                                                text: 'Average Room Rate'
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </td>           
+        </tr>        
+    </table>
+</body>

@@ -1,4 +1,4 @@
-namespace DataGov_API_Intro_6.Models
+namespace Project_College_Scorecard.Models
 {
     public class ErrorViewModel
     {

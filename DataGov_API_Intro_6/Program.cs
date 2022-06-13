@@ -1,4 +1,4 @@
-using DataGov_API_Intro_6.DataAccess;
+using Project_College_Scorecard.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 // https://stackoverflow.com/a/43098152/1385857
 // https://medium.com/executeautomation/asp-net-core-6-0-minimal-api-with-entity-framework-core-69d0c13ba9ab
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlServer(builder.Configuration["Data:parksservice:ConnectionString"]));
+        options.UseSqlServer(builder.Configuration["Data:collegescorecard:ConnectionString"]));
 
 // added from MVC template
 //services.AddMvc();
