@@ -1,0 +1,64 @@
+﻿@model Project_College_Scorecard.Models.School
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <dd>
+        <table class="table">
+            <tr>
+                <td>
+                    College Name: 
+                </td>
+                <td>
+                    <input type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City: 
+                </td>
+                <td>
+                    <input type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State: 
+                </td>
+                <td>
+                    <input type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zip: 
+                </td>
+                <td>
+                    <input type="text" />
+                </td>
+            </tr>
+        </table>
+    </dd>    
+    <dd>
+        <table class="table">
+            <tr>
+                <th>Tuition Revenue</th>
+                <th>Tuition Expenditure</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" />
+                </td>
+                <td>
+                    <input type="text" />
+                </td>
+            </tr>
+        </table>
+    </dd>
+    <dd>
+        <button id="Button" type="submit" name="submit" formmethod="post" class="btn btn-secondary btn-sm">Save</button>
+    </dd>
+}

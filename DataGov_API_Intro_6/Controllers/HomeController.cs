@@ -41,6 +41,7 @@ namespace Project_College_Scorecard.Controllers
 
             httpClient.BaseAddress = new Uri(NATIONAL_COLLEGE_API_PATH);
 
+
             try
             {
                 HttpResponseMessage response = httpClient.GetAsync(NATIONAL_COLLEGE_API_PATH)
@@ -86,13 +87,38 @@ namespace Project_College_Scorecard.Controllers
         }
 
         public IActionResult About()
-        {            
+        {
             return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+
+        //CRUD
+        [System.Web.Mvc.HttpPost]
+        public async Task<IActionResult> Create(
+        [Bind("zip,city,name,state,tuition_revenue_per_fte,instructional_expenditure_per_fte")] School school)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    dbContext.Add(school);
+                    await dbContext.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+            return View(school);
         }
     }
 }
