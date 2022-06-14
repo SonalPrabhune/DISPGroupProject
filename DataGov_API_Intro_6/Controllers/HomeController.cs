@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+//using System.Web.Mvc;
+using System.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project_College_Scorecard.Controllers
 {
@@ -64,6 +67,32 @@ namespace Project_College_Scorecard.Controllers
             }
 
             return View(colleges);
+        }
+
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var college = await dbContext.schools
+                                .FirstOrDefaultAsync(s => s.id == id);
+            if (college == null)
+            {
+                return NotFound();
+            }
+            return View(college);
+        }
+
+        public IActionResult About()
+        {            
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
         }
     }
 }

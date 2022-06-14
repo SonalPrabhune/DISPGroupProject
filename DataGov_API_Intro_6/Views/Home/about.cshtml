@@ -1,6 +1,8 @@
 @{ ViewData["Title"] = "About"; }
 
-
+@{
+    ViewBag.Title = "About";
+}
 <head>
     <meta charset="utf-8" />
     <title>Colleges</title>
@@ -8,18 +10,16 @@
 
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
     <table class="VanillaTable">
         <tr>
             <td colspan="3">
-                <a href="index.html"><img src=".\img\Logo.JPG" width="400"></img></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src=".\img\Logo.JPG" width="400"></img></a>
             </td>
         </tr>
         <tr>
             <td valign="top" class="LeftBar">
                 <table width="100%">
-                    <tr><td class="LeftBarCell">@Html.ActionLink("About page","about")</td></tr>
+                    <tr><td class="LeftBarCell"><a asp-action="About"></a></td></tr>
                 </table>
             </td>
             <td valign="top" width="5"> </td>
@@ -36,4 +36,3 @@
         </tr>
     </table>
 </body>
-</html>

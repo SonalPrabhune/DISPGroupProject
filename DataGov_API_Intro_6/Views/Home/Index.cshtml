@@ -15,13 +15,13 @@
     <table class="VanillaTable" border="1">
         <tr>
             <td colspan="3">
-                <a href="index.html"><img src=".\img\Logo.JPG" width="400"></img></a>   
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src=".\img\Logo.JPG" width="400"></img></a>   
             </td>
         </tr>       
         <tr>
             <td valign="top" class="LeftBar" >
                 <table width="100%">
-                    <tr><td class="LeftBarCell">@Html.ActionLink("About page","about")</td></tr>
+                    <tr><td class="LeftBarCell"><a asp-action="About"></a></td></tr>
                 </table>
             </td>
             <td valign="top" width="5"> </td>
@@ -39,7 +39,7 @@
                     {
                         <tr>  
                             <td><img class="PictureBox" src=".\img\nftccampus.jpg" /></td>
-                            <td class="Hotel"> <a href="details.cshtml?ID=@(result.latest.school.id)">@(result.latest.school.name)</a></td>                        
+                            <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.latest.school.id">@(result.latest.school.name)</a></td>                        
                             <td class="HotelDesc">@(result.latest.school.city)</td>
                             <td class="HotelDesc">@(result.latest.school.tuition_revenue_per_fte.ToString("C2"))</td>
                             <td class="HotelDesc">@(result.latest.school.instructional_expenditure_per_fte.ToString("C2"))</td>
