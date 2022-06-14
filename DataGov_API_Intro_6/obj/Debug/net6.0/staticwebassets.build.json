@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eCg5Pa8MpD40J1skzzg1uskZzFJds8lx+b4dWKgffkk=",
+  "Hash": "K07hvUEZro83Mk2AjbYT/qVjsGHZYBC4HbXnfmIC6Pw=",
   "Source": "Project_College_Scorecard",
   "BasePath": "_content/Project_College_Scorecard",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\sonal\\Projects\\Git\\DISPGroupProject\\DataGov_API_Intro_6\\wwwroot\\img\\logo.jpg",
+      "SourceId": "Project_College_Scorecard",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sonal\\Projects\\Git\\DISPGroupProject\\DataGov_API_Intro_6\\wwwroot\\",
+      "BasePath": "_content/Project_College_Scorecard",
+      "RelativePath": "img/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo.jpg"
     },
     {
       "Identity": "C:\\Users\\sonal\\Projects\\Git\\DISPGroupProject\\DataGov_API_Intro_6\\wwwroot\\img\\nftccampus.jpg",

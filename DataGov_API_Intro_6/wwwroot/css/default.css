@@ -43,7 +43,7 @@ a {
 }
 
 .VanillaTable {
-    border: 0px solid #2F4F4F;
+    border: 1px solid #2F4F4F;
     padding: 0px;
     width:100%;
 }
@@ -57,7 +57,7 @@ a {
 .MainContent {
     width: 90%;
     border: 3px solid #660066;
-    color: white;
+    color: black;
     background-color: #FFFFFF;
     font-weight: bold;
     padding: 5px;
@@ -70,13 +70,25 @@ a {
     width: 100%;
     border: 0px solid #FFFFFF;
     background-color: #CCFFFF;
-    color: white;
+    color: #000000;
     font-weight: bold;
     padding: 5px;
     margin-top: 0px;
     cursor: pointer;
     font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     font-size: 10px;
+}
+.PictureBoxHeader {
+    width: 200px;
+    background-color: #660066;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 0px;
+    cursor: pointer;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border: 1px solid #2F4F4F;
 }
 .PictureBox {
     width: 300px;
@@ -92,36 +104,28 @@ a {
     width: 200px;
     height: 50px;    
 }
-.Hotel {
-    border: 0px solid #2F4F4F;
-    background-color: #FFDFFF;
-    padding: 10px;
-    width: 30%;
-    font-weight: bold;
-    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-}
-.HotelAlt {
-    border: 0px solid #2F4F4F;
-    color: #FFFFFF;
-    background-color: #660066;
-    padding: 10px;
-    width: 30%;
-    font-weight: bold;
-    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-    font-size: 20px;
-}
 
 .HotelDesc {
-    border: 0px solid #2F4F4F;
+    border: 1px solid #2F4F4F;
     background-color: #FFF5FF;
-    padding: 0px;
+    color:black;
+    padding: 10px;
     width: 60%;
     font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
+.Hotel {
+    border: 1px solid #2F4F4F;    
+    background-color: #FFF5FF;
+    color: black;
+    padding: 10px;
+    width: 60%;
+    font-family: "Tahoma", "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
 .HotelDetailed {
-    border: 0px solid #2F4F4F;
+    border: 1px solid #2F4F4F;
     text-align: center;
     background-color: #FFDFFF;
     padding: 10px;

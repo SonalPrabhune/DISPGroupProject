@@ -12,7 +12,7 @@
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
-    <table class="VanillaTable">
+    <table class="VanillaTable" border="1">
         <tr>
             <td colspan="3">
                 <a href="index.html"><img src=".\img\Logo.JPG" width="400"></img></a>   
@@ -22,46 +22,41 @@
             <td valign="top" class="LeftBar" >
                 <table width="100%">
                     <tr><td class="LeftBarCell">@Html.ActionLink("About page","about")</td></tr>
-                    @*<tr><td class="LeftBarCell"><a href="Index.html">Flight Booking</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Car Rentals</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Cabin Rentals</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Boat Rentals</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Bike Rentals</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Motorcycle Zone</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Food and Restaurants</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Gift Shops</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Camping Gear</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Scenic Railroad Bookings</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">River Cruises</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">International Cruises</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Travel Insurance</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Procedures and Policies</a></td></tr>
-                    <tr><td class="LeftBarCell"><a href="Index.html">Information Zone</a></td></tr>*@
                 </table>
             </td>
             <td valign="top" width="5"> </td>
             <td  class="MainContent" valign="top">
-                <table border="0" valign="top">   
+                <table valign="top">   
+                        <tr>  
+                            <td class="PictureBoxHeader">Image</td>
+                            <td class="PictureBoxHeader">School Name</td>                        
+                            <td class="PictureBoxHeader">City</td>
+                            <td class="PictureBoxHeader">Tuition Revenue</td>
+                            <td class="PictureBoxHeader">Expenditure</td>
+                            <td class="PictureBoxHeader"></td>
+                         <tr/>
                     @foreach (Project_College_Scorecard.Models.CollegeResult result in Model.results)
                     {
                         <tr>  
                             <td><img class="PictureBox" src=".\img\nftccampus.jpg" /></td>
-                            <td class="Hotel"> <a href="Sonal.html">@(result.latest.school.name)</a></td>                        
-                            <td class="Hotel"> <a href="Sonal.html">@(result.latest.school.city)</a></td>
+                            <td class="Hotel"> <a href="details.cshtml?ID=@(result.latest.school.id)">@(result.latest.school.name)</a></td>                        
+                            <td class="HotelDesc">@(result.latest.school.city)</td>
+                            <td class="HotelDesc">@(result.latest.school.tuition_revenue_per_fte.ToString("C2"))</td>
+                            <td class="HotelDesc">@(result.latest.school.instructional_expenditure_per_fte.ToString("C2"))</td>
                             <td class="HotelDesc">
                                 <div class="chart-container" style="position: relative; height:15vh; width:15vw">
-                                    <canvas id="bar-chart"></canvas>
+                                    <canvas id=@(result.latest.school.id)></canvas>
                                 </div>
                                 <script>
-                                    new Chart(document.getElementById("bar-chart"), {
+                                    new Chart(document.getElementById(@(result.latest.school.id)), {
                                         type: 'bar',
                                         data: {
-                                            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                            labels: ["Revenue", "Expenditure"],
                                             datasets: [
                                                 {
-                                                    label: "Average Room Rate ",
-                                                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                                                    data: [247, 180, 320 , 350, 533]
+                                                    label: "Financials per FTE",
+                                                    backgroundColor: ["#3e95cd", "#8e5ea2"],
+                                                    data: [@(result.latest.school.tuition_revenue_per_fte), @(result.latest.school.instructional_expenditure_per_fte)]
                                                 }
                                             ]
                                         },
@@ -70,7 +65,7 @@
                                             legend: { display: false },
                                             title: {
                                                 display: true,
-                                                text: 'Average Room Rate'
+                                                text: 'School Financials'
                                             }
                                         }
                                     });
