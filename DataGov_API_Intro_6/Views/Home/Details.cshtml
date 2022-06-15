@@ -5,10 +5,10 @@
 }
 
 <dd>
-        College Name: @Html.DisplayFor(model => model.name)
+    College Name: @Html.DisplayFor(model => model.name)
 </dd>
 <dd>
-        City: @Html.DisplayFor(model => model.city)
+    City: @Html.DisplayFor(model => model.city)
 </dd>
 <dd>
     <table class="table">
@@ -25,4 +25,16 @@
             </td>
         </tr>
     </table>
+</dd>
+<dd>
+    <table class="table">
+        <tr>
+            <td>
+                <button id="Button" type="submit" name="edit" formmethod="post" class="btn btn-secondary btn-sm">Edit</button>
+            </td>
+            <td>
+                <button id="Button" type="submit" name="delete" formmethod="post" class="btn btn-secondary btn-sm">Delete</button>
+            </td>
+        </tr>
+    </table>    
 </dd>

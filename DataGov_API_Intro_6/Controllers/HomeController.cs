@@ -98,6 +98,7 @@ namespace Project_College_Scorecard.Controllers
 
 
         //CRUD
+        //Create
         [System.Web.Mvc.HttpPost]
         public async Task<IActionResult> Create(
         [Bind("zip,city,name,state,tuition_revenue_per_fte,instructional_expenditure_per_fte")] School school)
@@ -118,6 +119,59 @@ namespace Project_College_Scorecard.Controllers
                     "Try again, and if the problem persists " +
                     "see your system administrator.");
             }
+            return View(school);
+        }
+
+        //Update
+        public async Task<IActionResult> Edit(int id, 
+            [Bind("zip,city,name,state,tuition_revenue_per_fte,instructional_expenditure_per_fte")] School school)
+        {
+            if (id != school.id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    dbContext.Update(school);
+                    await dbContext.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+            }
+            return View(school);
+        }
+
+        //Delete
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var school = await dbContext.schools
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.id == id);
+            if (school == null)
+            {
+                return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Try again, and if the problem persists " +
+                    "see your system administrator.";
+            }
+
             return View(school);
         }
     }
