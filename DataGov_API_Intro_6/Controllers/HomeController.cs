@@ -38,36 +38,40 @@ namespace Project_College_Scorecard.Controllers
             string collegesData = "";
 
             AllColleges colleges = null;
+            School schools = null;
 
             httpClient.BaseAddress = new Uri(NATIONAL_COLLEGE_API_PATH);
 
-
-            try
+            if (!dbContext.schools.Any())
             {
-                HttpResponseMessage response = httpClient.GetAsync(NATIONAL_COLLEGE_API_PATH)
-                                                        .GetAwaiter().GetResult();
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    collegesData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                }
+                    HttpResponseMessage response = httpClient.GetAsync(NATIONAL_COLLEGE_API_PATH)
+                                                            .GetAwaiter().GetResult();
 
-                if (!collegesData.Equals(""))
+                    if (response.IsSuccessStatusCode)
+                    {
+                        collegesData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+
+                    if (!collegesData.Equals(""))
+                    {
+                        // JsonConvert is part of the NewtonSoft.Json Nuget package
+                        colleges = JsonConvert.DeserializeObject<AllColleges>(collegesData);
+                    }
+
+                    dbContext.allColleges.Add(colleges);
+                    await dbContext.SaveChangesAsync();
+                }
+                catch (Exception e)
                 {
-                    // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    colleges = JsonConvert.DeserializeObject<AllColleges>(collegesData);
+                    // This is a useful place to insert a breakpoint and observe the error message
+                    Console.WriteLine(e.Message);
                 }
-
-                dbContext.allColleges.Add(colleges);
-                await dbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                // This is a useful place to insert a breakpoint and observe the error message
-                Console.WriteLine(e.Message);
-            }
-
-            return View(colleges);
+            }    
+            var allCollegeData = dbContext.schools.ToList();
+            ViewData["School"] = allCollegeData;
+            return View(schools);
         }
 
 
@@ -173,6 +177,30 @@ namespace Project_College_Scorecard.Controllers
             }
 
             return View(school);
+
+
+            //Response<string> result = new Response<string>();
+            //try
+            //{
+            //    User data = _dbContext.Users.FirstOrDefault(u => u.Id == id);
+            //    _dbContext.Users.Remove(data);
+            //    var res = _dbContext.SaveChanges();
+            //    if (res == 1)
+            //    {
+            //        result.message = "Success";
+            //    }
+            //    else
+            //    {
+            //        result.message = "Failed";
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    result.message = ex.Message;
+
+            //}
+            //return result;
         }
     }
 }

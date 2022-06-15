@@ -1,4 +1,4 @@
-﻿@model Project_College_Scorecard.Models.AllColleges
+﻿@model Project_College_Scorecard.Models.School
 
 @{ ViewData["Title"] = "Index"; }
 
@@ -30,20 +30,20 @@
                             <td class="PictureBoxHeader">Expenditure</td>
                             <td class="PictureBoxHeader"></td>
                          <tr/>
-                    @foreach (Project_College_Scorecard.Models.CollegeResult result in Model.results)
+                    @foreach (Project_College_Scorecard.Models.School result in ViewBag.School)
                     {
                         <tr>  
                             <td><img class="PictureBox" src=".\img\nftccampus.jpg" /></td>
-                            <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.latest.school.id">@(result.latest.school.name)</a></td>                        
-                            <td class="HotelDesc">@(result.latest.school.city)</td>
-                            <td class="HotelDesc">@(result.latest.school.tuition_revenue_per_fte.ToString("C2"))</td>
-                            <td class="HotelDesc">@(result.latest.school.instructional_expenditure_per_fte.ToString("C2"))</td>
+                            <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.id">@result.name</a></td>                        
+                            <td class="HotelDesc">@(result.city)</td>
+                            <td class="HotelDesc">@(result.tuition_revenue_per_fte.ToString("C2"))</td>
+                            <td class="HotelDesc">@(result.instructional_expenditure_per_fte.ToString("C2"))</td>
                             <td class="HotelDesc">
                                 <div class="chart-container" style="position: relative; height:15vh; width:15vw">
-                                    <canvas id=@(result.latest.school.id)></canvas>
+                                    <canvas id=@(result.id)></canvas>
                                 </div>
                                 <script>
-                                    new Chart(document.getElementById(@(result.latest.school.id)), {
+                                    new Chart(document.getElementById(@(result.id)), {
                                         type: 'bar',
                                         data: {
                                             labels: ["Revenue", "Expenditure"],
@@ -51,7 +51,7 @@
                                                 {
                                                     label: "Financials per FTE",
                                                     backgroundColor: ["#3e95cd", "#8e5ea2"],
-                                                    data: [@(result.latest.school.tuition_revenue_per_fte), @(result.latest.school.instructional_expenditure_per_fte)]
+                                                    data: [@(result.tuition_revenue_per_fte), @(result.instructional_expenditure_per_fte)]
                                                 }
                                             ]
                                         },

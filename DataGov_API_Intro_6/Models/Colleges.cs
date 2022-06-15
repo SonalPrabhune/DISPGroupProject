@@ -31,11 +31,24 @@ namespace Project_College_Scorecard.Models
     {
         [Key]
         public int id { get; set; }
+
+        [DataType(DataType.PostalCode)]
         public string zip { get; set; }
+
+        [StringLength(50, ErrorMessage = "City name cannot be longer than 50 characters.")]
         public string city { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "College name cannot be longer than 50 characters.")]
         public string name { get; set; }
+
+        [StringLength(50, ErrorMessage = "State name cannot be longer than 50 characters.")]
         public string state { get; set; }
+
+        [DataType(DataType.Currency)]
         public int tuition_revenue_per_fte { get; set; }
+
+        [DataType(DataType.Currency)]
         public int instructional_expenditure_per_fte { get; set; }
     }
 }

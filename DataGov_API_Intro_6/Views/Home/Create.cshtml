@@ -4,8 +4,17 @@
     ViewData["Title"] = "Create";
 }
 
+<div id="CreateSchoolContainer" class="container-fluid">
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
+    @*if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    {
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <h4>Validation Errors</h4>
+            @Html.ValidationSummary(false, "College creation was unsuccessful. Please correct the errors and try again")
+        </div>
+    }*@
     <dd>
         <table class="table">
             <tr>
@@ -13,7 +22,7 @@
                     College Name: 
                 </td>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.name, new {@class = "form-control", placeholder = "College Name", tabindex = 5})
                 </td>
             </tr>
             <tr>
@@ -21,7 +30,7 @@
                     City: 
                 </td>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.city, new {@class = "form-control", placeholder = "City", tabindex = 5})
                 </td>
             </tr>
             <tr>
@@ -29,7 +38,7 @@
                     State: 
                 </td>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.state, new {@class = "form-control", placeholder = "State", tabindex = 5})
                 </td>
             </tr>
             <tr>
@@ -37,7 +46,7 @@
                     Zip: 
                 </td>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.zip, new {@class = "form-control", placeholder = "Zip code", tabindex = 5})
                 </td>
             </tr>
         </table>
@@ -50,10 +59,10 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.tuition_revenue_per_fte, new {@class = "form-control", placeholder = "Tuition Revenue", tabindex = 2})
                 </td>
                 <td>
-                    <input type="text" />
+                    @Html.TextBoxFor(s => s.tuition_revenue_per_fte, new {@class = "form-control", placeholder = "Tuition Expenditure", tabindex = 2})
                 </td>
             </tr>
         </table>
@@ -62,3 +71,9 @@
         <button id="Button" type="submit" name="submit" formmethod="post" class="btn btn-secondary btn-sm">Save</button>
     </dd>
 }
+</div>
+
+@*@Html.Hidden("IsSubmitted")
+<div id="CollegeExistsDialog">
+    This college already exists in database.
+</div>*@
