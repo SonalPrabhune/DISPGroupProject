@@ -37,17 +37,12 @@ C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\Project_College_Scorecard.csproj.AssemblyReference.cache
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\Project_College_Scorecard.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\Project_College_Scorecard.AssemblyInfoInputs.cache
@@ -554,3 +549,8 @@ C:\Users\Roger\Source\Repos\RI4375\DISPGroupProject\DataGov_API_Intro_6\obj\Debu
 C:\Users\Roger\Source\Repos\RI4375\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\Project_College_Scorecard.pdb
 C:\Users\Roger\Source\Repos\RI4375\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\Project_College_Scorecard.genruntimeconfig.cache
 C:\Users\Roger\Source\Repos\RI4375\DISPGroupProject\DataGov_API_Intro_6\obj\Debug\net6.0\ref\Project_College_Scorecard.dll
+C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\sonal\Projects\Git\DISPGroupProject\DataGov_API_Intro_6\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

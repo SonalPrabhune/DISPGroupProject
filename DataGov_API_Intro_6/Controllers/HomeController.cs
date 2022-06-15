@@ -79,13 +79,13 @@ namespace Project_College_Scorecard.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var college = await dbContext.schools
                                 .FirstOrDefaultAsync(s => s.id == id);
             if (college == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(college);
         }
@@ -103,16 +103,22 @@ namespace Project_College_Scorecard.Controllers
 
         //CRUD
         //Create
-        [System.Web.Mvc.HttpPost]
-        public async Task<IActionResult> Create(
-        [Bind("zip,city,name,state,tuition_revenue_per_fte,instructional_expenditure_per_fte")] School school)
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(School school)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     dbContext.Add(school);
-                    await dbContext.SaveChangesAsync();
+                    dbContext.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -154,16 +160,16 @@ namespace Project_College_Scorecard.Controllers
         }
 
         //Delete
-        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var school = await dbContext.schools
+            var school = dbContext.schools
                 .AsNoTracking()
-                .FirstOrDefaultAsync(s => s.id == id);
+                .FirstOrDefault(s => s.id == id);
             if (school == null)
             {
                 return NotFound();
