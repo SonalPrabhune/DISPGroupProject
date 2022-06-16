@@ -202,7 +202,7 @@ namespace Project_College_Scorecard.Controllers
                 var res = dbContext.SaveChanges();
                 if (res == 1)
                 {
-                    result = "Deleted Successfully";               
+                    result = "Deleted Successfully";
                 }
                 else
                 {
@@ -222,8 +222,7 @@ namespace Project_College_Scorecard.Controllers
                     "see your system administrator.";
             }
 
-            //TempData["message"] = result;
-            //FlashMessage.Warning("Your error message");
+            TempData["message"] = result;
             return RedirectToAction("Index", "Home");
         }
     }

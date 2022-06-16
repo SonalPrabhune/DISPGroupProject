@@ -11,7 +11,13 @@
     <link href=".\css\default.css" rel="stylesheet" type="text/css" media="screen" />
 
 </head>
-<body>    
+<body>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show text-center">
+            <h4>@TempData["message"]</h4>
+        </div>
+    }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
     <table class="VanillaTable" border="1">
@@ -35,7 +41,14 @@
                         @foreach (Project_College_Scorecard.Models.School result in ViewBag.School)
                         {
                         <tr>
-                            <td><img class="PictureBox" src=".\img\nftccampus.jpg" /></td>
+                                @if (result.id < 21)
+                                {
+                                <td><img class="PictureBox" src=".\img\@(result.id).jpg" /></td>
+                                }
+                                else
+                                {
+                                <td><img class="PictureBox" src=".\img\generic.jpg" /></td>
+                                }
                             <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.id">@result.name</a></td>
                             <td class="HotelDesc">@(result.city)</td>
                             <td class="HotelDesc">@(result.tuition_revenue_per_fte.ToString("C2"))</td>
