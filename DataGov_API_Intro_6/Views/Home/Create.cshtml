@@ -5,76 +5,71 @@
 }
 
 <div id="CreateSchoolContainer" class="container-fluid">
-@using (Html.BeginForm("Create", "Home", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
     {
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <h4>Validation Errors</h4>
-            @Html.ValidationSummary(false, "College creation was unsuccessful. Please correct the errors and try again")
-        </div>
+        @Html.AntiForgeryToken()
+        if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <h4>Validation Errors</h4>
+                @Html.ValidationSummary(false, "College creation was unsuccessful. Please correct the errors and try again")
+            </div>
+        }
+        <dd>
+            <table class="table">
+                <tr>
+                    <td>
+                        College Name:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.name, new {@class = "form-control", placeholder = "College Name", tabindex = 5})
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.city, new {@class = "form-control", placeholder = "City", tabindex = 5})
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.state, new {@class = "form-control", placeholder = "State", tabindex = 5})
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Zip:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.zip, new {@class = "form-control", placeholder = "Zip code", tabindex = 5})
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Tuition Revenue</th>
+                    <th>Tuition Expenditure</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(s => s.tuition_revenue_per_fte, new {@class = "form-control", placeholder = "Tuition Revenue", tabindex = 2})
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.instructional_expenditure_per_fte, new {@class = "form-control", placeholder = "Tuition Expenditure", tabindex = 2})
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dd>
+            <input type="submit" value="Create" class="btn btn-secondary btn-sm" />
+        </dd>
     }
-    <dd>
-        <table class="table">
-            <tr>
-                <td>
-                    College Name: 
-                </td>
-                <td>
-                    @Html.TextBoxFor(s => s.name, new {@class = "form-control", placeholder = "College Name", tabindex = 5})
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    City: 
-                </td>
-                <td>
-                    @Html.TextBoxFor(s => s.city, new {@class = "form-control", placeholder = "City", tabindex = 5})
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    State: 
-                </td>
-                <td>
-                    @Html.TextBoxFor(s => s.state, new {@class = "form-control", placeholder = "State", tabindex = 5})
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Zip: 
-                </td>
-                <td>
-                    @Html.TextBoxFor(s => s.zip, new {@class = "form-control", placeholder = "Zip code", tabindex = 5})
-                </td>
-            </tr>
-        </table>
-    </dd>    
-    <dd>
-        <table class="table">
-            <tr>
-                <th>Tuition Revenue</th>
-                <th>Tuition Expenditure</th>
-            </tr>
-            <tr>
-                <td>
-                    @Html.TextBoxFor(s => s.tuition_revenue_per_fte, new {@class = "form-control", placeholder = "Tuition Revenue", tabindex = 2})
-                </td>
-                <td>
-                    @Html.TextBoxFor(s => s.tuition_revenue_per_fte, new {@class = "form-control", placeholder = "Tuition Expenditure", tabindex = 2})
-                </td>
-            </tr>
-        </table>
-    </dd>
-    <dd>
-        <input type="submit" value="Create" class="btn btn-secondary btn-sm" />
-    </dd>
-}
-</div>
-
-@Html.Hidden("IsSubmitted")
-<div id="CollegeExistsDialog">
-    This college already exists in database.
 </div>

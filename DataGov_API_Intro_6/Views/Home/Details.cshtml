@@ -30,11 +30,84 @@
     <table class="table">
         <tr>
             <td>
-                <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Home" asp-action="Edit">Edit</a>
+                @using (Html.BeginForm("Edit", "Home", new { id = Model.id }, FormMethod.Get))
+                {
+                    <input type="submit" value="Edit" class="btn btn-secondary btn-sm" />
+                }
             </td>
             <td>
-                <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Home" asp-action="Delete">Delete</a>
+                <div class="delete-section">
+                    @using (Html.BeginForm("Delete", "Home", new { id = Model.id }, FormMethod.Post))
+                    {
+                        <a class="btn btn-secondary btn-sm" href="@Url.Action("Delete", new {id = Model.id})">Delete</a>
+                        <a class="btn btn-secondary delete-confirm" style="display:none" data-delete-id="@Model.id">Confirm Delete</a>
+                    }
+                </div>
             </td>
         </tr>
-    </table>    
+    </table>
 </dd>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function() {
+            $("a.btn-sm").click(function() {
+                var deleteLink = $(this);
+                deleteLink.hide();
+                var confirmButton = deleteLink.siblings(".delete-confirm");
+                confirmButton.show();
+
+                var cancelDelete = function() {
+                    removeEvents();
+                    showDeleteLink();
+                };
+
+                var deleteItem = function() {
+                    removeEvents();
+                    confirmButton.hide();
+                    $.post(
+                        '@Url.Action("Delete")',
+                        AddAntiForgeryToken({ id: confirmButton.attr('data-delete-id') }))
+                        .done(function() {
+                            var parentRow = deleteLink.parents("tr:first");
+                            parentRow.fadeOut('fast', function() {
+                                parentRow.remove();
+                            });
+                        }).fail(function(data) {
+                            alert("error");
+                        });
+                    return false;
+                };
+
+                var removeEvents = function() {
+                    confirmButton.off("click", deleteItem);
+                    $(document).on("click", cancelDelete);
+                    $(document).off("keypress", onKeyPress);
+                };
+
+                var showDeleteLink = function() {
+                    confirmButton.hide();
+                    deleteLink.show();
+                };
+
+                var onKeyPress = function(e) {
+                    //Cancel if escape key pressed
+                    if (e.which == 27) {
+                        cancelDelete();
+                    }
+                };
+
+                confirmButton.on("click", deleteItem);
+                $(document).on("click", cancelDelete);
+                $(document).on("keypress", onKeyPress);
+
+                return false;
+            });
+
+            AddAntiForgeryToken = function(data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+        });
+    </script>
+    }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 //using System.Web.Mvc;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Project_College_Scorecard.Controllers
 {
@@ -75,14 +76,14 @@ namespace Project_College_Scorecard.Controllers
         }
 
 
-        public async Task<IActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
-            var college = await dbContext.schools
-                                .FirstOrDefaultAsync(s => s.id == id);
+            var college = dbContext.schools
+                                .FirstOrDefault(s => s.id == id);
             if (college == null)
             {
                 return RedirectToAction("Index");
@@ -119,7 +120,7 @@ namespace Project_College_Scorecard.Controllers
                 {
                     dbContext.Add(school);
                     dbContext.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Details", new {id = school.id});
                 }
             }
             catch (DbUpdateException /* ex */)
@@ -133,8 +134,25 @@ namespace Project_College_Scorecard.Controllers
         }
 
         //Update
-        public async Task<IActionResult> Edit(int id, 
-            [Bind("zip,city,name,state,tuition_revenue_per_fte,instructional_expenditure_per_fte")] School school)
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var college = dbContext.schools
+                                .FirstOrDefault(s => s.id == id);
+            if (college == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(college);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, School school)
         {
             if (id != school.id)
             {
@@ -145,7 +163,7 @@ namespace Project_College_Scorecard.Controllers
                 try
                 {
                     dbContext.Update(school);
-                    await dbContext.SaveChangesAsync();
+                    dbContext.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateException /* ex */)
@@ -160,6 +178,7 @@ namespace Project_College_Scorecard.Controllers
         }
 
         //Delete
+        [HttpPost]
         public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
@@ -175,6 +194,27 @@ namespace Project_College_Scorecard.Controllers
                 return NotFound();
             }
 
+            string result;
+            try
+            {
+                School data = dbContext.schools.FirstOrDefault(s => s.id == id);
+                dbContext.schools.Remove(data);
+                var res = dbContext.SaveChanges();
+                if (res == 1)
+                {
+                    result = "Deleted Successfully";               
+                }
+                else
+                {
+                    result = "Delete Failed";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+
+            }
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewData["ErrorMessage"] =
@@ -182,31 +222,9 @@ namespace Project_College_Scorecard.Controllers
                     "see your system administrator.";
             }
 
-            return View(school);
-
-
-            //Response<string> result = new Response<string>();
-            //try
-            //{
-            //    User data = _dbContext.Users.FirstOrDefault(u => u.Id == id);
-            //    _dbContext.Users.Remove(data);
-            //    var res = _dbContext.SaveChanges();
-            //    if (res == 1)
-            //    {
-            //        result.message = "Success";
-            //    }
-            //    else
-            //    {
-            //        result.message = "Failed";
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    result.message = ex.Message;
-
-            //}
-            //return result;
+            //TempData["message"] = result;
+            //FlashMessage.Warning("Your error message");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

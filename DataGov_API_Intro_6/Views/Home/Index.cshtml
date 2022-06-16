@@ -1,6 +1,8 @@
 ﻿@model Project_College_Scorecard.Models.School
 
-@{ ViewData["Title"] = "Index"; }
+@{
+    ViewData["Title"] = "Index";
+}
 
 
 <head>
@@ -9,32 +11,32 @@
     <link href=".\css\default.css" rel="stylesheet" type="text/css" media="screen" />
 
 </head>
-<body>
+<body>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
     <table class="VanillaTable" border="1">
         <tr>
             <td colspan="3">
-                <a asp-area="" asp-controller="Home" asp-action="Index"><img src=".\img\Logo.JPG" width="400"></img></a>   
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src=".\img\Logo.JPG" width="400"></img></a>
             </td>
-        </tr>       
+        </tr>
         <tr>
 
-            <td  class="MainContent" valign="top">
-                <table valign="top">   
-                        <tr>  
-                            <td class="PictureBoxHeader">Image</td>
-                            <td class="PictureBoxHeader">School Name</td>                        
-                            <td class="PictureBoxHeader">City</td>
-                            <td class="PictureBoxHeader">Tuition Revenue</td>
-                            <td class="PictureBoxHeader">Expenditure</td>
-                            <td class="PictureBoxHeader"></td>
-                         <tr/>
-                    @foreach (Project_College_Scorecard.Models.School result in ViewBag.School)
-                    {
-                        <tr>  
+            <td class="MainContent" valign="top">
+                <table valign="top">
+                    <tr>
+                        <td class="PictureBoxHeader">Image</td>
+                        <td class="PictureBoxHeader">School Name</td>
+                        <td class="PictureBoxHeader">City</td>
+                        <td class="PictureBoxHeader">Tuition Revenue</td>
+                        <td class="PictureBoxHeader">Expenditure</td>
+                        <td class="PictureBoxHeader"></td>
+                    <tr />
+                        @foreach (Project_College_Scorecard.Models.School result in ViewBag.School)
+                        {
+                        <tr>
                             <td><img class="PictureBox" src=".\img\nftccampus.jpg" /></td>
-                            <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.id">@result.name</a></td>                        
+                            <td class="Hotel"> <a asp-action="Details" asp-route-ID="@result.id">@result.name</a></td>
                             <td class="HotelDesc">@(result.city)</td>
                             <td class="HotelDesc">@(result.tuition_revenue_per_fte.ToString("C2"))</td>
                             <td class="HotelDesc">@(result.instructional_expenditure_per_fte.ToString("C2"))</td>
@@ -67,9 +69,9 @@
                                 </script>
                             </td>
                         </tr>
-                    }
+                        }
                 </table>
-            </td>           
-        </tr>        
+            </td>
+        </tr>
     </table>
 </body>

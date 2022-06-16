@@ -1,0 +1,65 @@
+﻿@model Project_College_Scorecard.Models.School
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="EditSchoolContainer" class="container-fluid">
+    @using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <h4>Validation Errors</h4>
+                @Html.ValidationSummary(false, "College edit was unsuccessful. Please correct the errors and try again")
+            </div>
+        }
+        <dd>
+            College Name: @Html.DisplayFor(model => model.name)
+            <input type="hidden" name="name" value=@Model.name id="name"/>
+        </dd>
+        <dd>
+            City: @Html.DisplayFor(model => model.city)
+            <input type="hidden" name="city" value=@Model.city id="city"/>
+        </dd>
+        <dd>
+            State: @Html.DisplayFor(model => model.state)
+            <input type="hidden" name="state" value=@Model.state id="state"/>
+        </dd>
+        <dd>
+            Zip: @Html.DisplayFor(model => model.zip)
+            <input type="hidden" name="zip" value=@Model.zip id="zip"/>
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Tuition Revenue</th>
+                    <th>Tuition Expenditure</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(s => s.tuition_revenue_per_fte)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(s => s.instructional_expenditure_per_fte)
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("Edit", "Home", new { id = Model.id }, FormMethod.Post))
+                        {
+                            <input type="submit" value="Edit" class="btn btn-secondary btn-sm" />
+                        }
+                    </td>
+                </tr>
+            </table>
+        </dd>
+    }
+</div>
