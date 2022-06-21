@@ -162,7 +162,13 @@ namespace Project_College_Scorecard.Controllers
             {
                 try
                 {
-                    dbContext.Update(school);
+                    var modifiedSchool = new School { id = id, 
+                        tuition_revenue_per_fte = school.tuition_revenue_per_fte,
+                        instructional_expenditure_per_fte = school.instructional_expenditure_per_fte
+                    };
+                    dbContext.Attach(modifiedSchool);
+                    dbContext.Entry(modifiedSchool).Property(s => s.tuition_revenue_per_fte).IsModified = true;
+                    dbContext.Entry(modifiedSchool).Property(s => s.instructional_expenditure_per_fte).IsModified = true;
                     dbContext.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }

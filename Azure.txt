@@ -1,0 +1,74 @@
+Resource group: DISProject
+Correlation ID: 5fd95807-44dd-4bcd-bb25-70cd1965ca03
+SQL DB Instance:
+Server name:dis-project
+DB name: DISColleges
+sql authentication
+admin login:sonal
+pwd: DISProject#
+
+
+
+Instance:
+https://projectcollegescorecard.azurewebsites.net
+Subscription: 973f4e83-6c0a-47bc-89f7-45c6a2838389
+Resource grp: DISProject
+ResourceName: ProjectCollegeScorecard
+
+Subscription
+Azure for Students
+Resource group
+DISProject
+Region
+East US
+Database name
+DISColleges
+Server
+(new) dis-project
+Authentication method
+SQL authentication
+Server admin login
+sonal
+Networking
+Allow Azure services and resources to access this server
+Yes
+Add current client IP address 47.197.57.73
+Yes
+Private endpoint
+None
+Minimum TLS version
+1.2
+Connection Policy
+Default
+Security
+Identity
+Not enabled
+Service principal (preview)
+Off
+Transparent data encryption
+Service-managed key selected
+Advanced data security
+Not now
+Sql Ledger(Database)
+Disabled
+Digest Storage
+Disabled
+Additional settings
+Use existing data
+Blank
+Collation
+SQL_Latin1_General_CP1_CI_AS
+Maintenance window
+System default (5pm to 8am)
+
+our deployment is complete
+
+Deployment name:Microsoft.SQLDatabase.newDatabaseNewServer_fdf8003eab2b42538e415
+Subscription:Azure for Students
+Resource group:DISProject
+Start time:6/19/2022, 12:27:10 PM
+Correlation ID:
+5fd95807-44dd-4bcd-bb25-70cd1965ca03
+Deployment details
+(Download)
+Next steps
